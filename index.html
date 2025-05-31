@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOGIN</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .login-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: slideln 0.6s ease;
+        }
+        @keyframes slideln {
+            from {transform: translateY(-30px);opacity: 0;}
+            to{transform: translateX(0);opacity: 1;}
+        }
+        input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            border-radius: 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:active {
+            background: #003d80;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1>LOGIN FORM</h1>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <div id="error" class="error"></div>
+        <button onclick="login()">Login</button>
+    </div>
+    <script>
+        const validEmail="amam04@gmail.com";
+        const validPassword="1875494";
+
+        function login() {
+            const email=document.getElementById("email").value.trim();
+            const password=document.getElementById("password").value;
+            const error=document.getElementById("error");
+
+            const emailRegex= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(email)) {
+                error.textContent="invalid email format";
+            }else if (email===validEmail&&password===validPassword){
+                alert("login successfull");
+                error.textContent =""
+            }else{
+                error.textContent ="no user found or incorrect password";
+            }
+        }
+    </script>
+</body>
+</html>
